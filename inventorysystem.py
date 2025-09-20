@@ -1,9 +1,12 @@
+# LANCE ANDREY SILVA
+# OOP 2107
+# LAB 1 - INVENTORY MANAGEMENT SYSTEM
 
-class Product:  
+class Product:  # Product class to manage inventory
     inventory_list = []
     product_count = 0
 
-    def __init__(self, product_id, name, category, quantity, price, supplier):
+    def __init__(self, product_id, name, category, quantity, price, supplier): # Initialize product attri
         self.product_id = product_id
         self.name = name
         self.category = category
@@ -13,14 +16,14 @@ class Product:
        #self.product_count += 1
     
 
-    @classmethod
+    @classmethod # Class method to add a product to inventory
     def add_product(cls, name, category, price, supplier, quantity):
         cls.product_count += 1
         addprod = Product(cls.product_count, name, category, price, supplier, quantity)
         cls.inventory_list.append(addprod)
         return "Product added successfully."
     
-    @classmethod
+    @classmethod # Class method to delete a product from inventory
     def delete_product(cls, product_id):
         for product in cls.inventory_list:
             if product.product_id == product_id:
@@ -28,14 +31,14 @@ class Product:
                 return "Product deleted successfully."
         return "Product not found."
     
-    @classmethod
+    @classmethod #class method to update product details
     def update_product(cls, product_id, quantity, price):
         for product in cls.inventory_list:
             if product.product_id == product_id:
                 product.quantity = quantity
                 product.price = price
                 return "Product updated successfully."
-        return "Product not found."
+        return "Product not found." #handles error if product not found
     
     @classmethod
     def delete_product(cls, product_id):
@@ -46,7 +49,7 @@ class Product:
         return "Product not found."
     
     @classmethod
-    def view_inventory(cls):
+    def view_inventory(cls): #function that views all products in inventory
         available = []
         for product in cls.inventory_list:
             avail = {
@@ -68,12 +71,12 @@ class Order:
                      product.quantity -= quantity
                      return f"Order {order_id} placed successfully."
                 else:
-                     return "Insufficient stock."
-         return "Product not found."
+                     return "Insufficient stock." #error handling for insufficient stock
+         return "Product not found." #error handling if product not found
 
 
 
-# OUTPUTS
+#this part handles the function calls and prints the outputs
 pr1 = Product.add_product("Laptop", "Electronics", 10, 999.99, "TechSupplier")
 pr2 = Product.add_product("Smartphone", "Electronics", 20, 699.99, "MobileWorld")
 pr3 = Product.add_product("Headphones", "Electronics", 15, 199.99, "SoundCorp")
@@ -83,14 +86,14 @@ dlt = Product.delete_product(1)
 view = Product.view_inventory()
 order1 = Order.place_order(2, 2, 2)
 
-#PRINTS OF OUTPUTS
+#this part prints the outputs of the function calls
 print(pr1)
 print(pr2)
 print(pr3)
 print(pr4)
 print(upd)
 print(dlt)
-print(view)
+print("VIEW INVENTORY \n", view)
 print(order1)
 
 
