@@ -40,7 +40,7 @@ class Product:  # Product class to manage inventory
                 return "Product updated successfully."
         return "Product not found." #handles error if product not found
     
-    @classmethod
+    @classmethod #class method to delete a product from inventory
     def delete_product(cls, product_id):
         for product in cls.inventory_list:
             if product.product_id == product_id:
@@ -48,8 +48,8 @@ class Product:  # Product class to manage inventory
                 return "Product deleted successfully."
         return "Product not found."
     
-    @classmethod
-    def view_inventory(cls): #function that views all products in inventory
+    @classmethod #class method to view all products in inventory
+    def view_inventory(cls):
         available = []
         for product in cls.inventory_list:
             avail = {
@@ -76,7 +76,7 @@ class Order:
 
 
 
-#this part handles the function calls and prints the outputs
+#This part handles the function calls and prints the outputs
 pr1 = Product.add_product("Laptop", "Electronics", 10, 999.99, "TechSupplier")
 pr2 = Product.add_product("Smartphone", "Electronics", 20, 699.99, "MobileWorld")
 pr3 = Product.add_product("Headphones", "Electronics", 15, 199.99, "SoundCorp")
